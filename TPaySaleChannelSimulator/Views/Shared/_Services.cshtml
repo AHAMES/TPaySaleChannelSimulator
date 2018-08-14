@@ -1,8 +1,9 @@
 ﻿
 <div class="sidenav" >
-    <a href="#">Operators</a>
+    @Html.ActionLink("Operator", "Index","Operator")
     <a href="#">Merchants</a>
     <a href="#">Sale Channel</a>
+    <hr />
     @Html.ActionLink("Register", "Register", "Account", routeValues: null, htmlAttributes: new { id = "registerLink" })
     @Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })
 
