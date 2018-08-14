@@ -1,12 +1,25 @@
 ﻿@model IEnumerable<TPaySaleChannelSimulator.Models.Operator>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Operators</h2>
+
+
 <table class="table">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.country)
+        </th>
+        <th>
+            Available
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.description)
         </th>
         <th></th>
     </tr>
@@ -15,6 +28,15 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.country)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.isDown)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.description)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

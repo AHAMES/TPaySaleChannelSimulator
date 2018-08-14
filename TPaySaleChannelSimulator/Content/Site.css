@@ -1,87 +1,94 @@
-﻿body {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-}
-
-/* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
-}
-
-#container {
-    min-height: 100%;
-    position: relative;
-}
-/* Override the default bootstrap behavior where horizontal description lists 
-   will truncate terms that are too long to fit in the left column 
-*/
-.dl-horizontal dt {
-    white-space: normal;
-}
-
-header {
-    background: #111;
-    padding: 10px;
-}
-
-#body {
-    padding-left:230px
-}
-
-footer {
-    position: absolute;
-    bottom: 0;
+﻿#header {
+    background-color: black;
     width: 100%;
-    height: 60px;
-    background: #111;
+    height: 50px;
+    
 }
-/* Set width on the form input elements since they're 100% wide by default */
-input,
-select,
-textarea {
-    max-width: 280px;
+#header a{
+     background: url('../Images/TPay Logo.png') no-repeat top left;
+     display: block;
+     width: 100px;
+     height: 150px;
+     text-indent: -9999px; /* hides the link text */
+     background-size: contain;
+
 }
 
-.logo {
-    /*background: url('../Images/TPay Logo.png') no-repeat top left;*/
-    display: block;
-    width: 100%;
-    height: 120px;
-    text-indent: -9999px;
+#sidebar-left {
     float: left;
-}
-
-.sidenav {
-    height: 100%;
     width: 200px;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    left: 0;
-    background-color: #111;
-    overflow-x: hidden;
-    padding-top: 110px;
-    float: left;
+    background-color: black;
+    height:100%;
 }
 
-    .sidenav a {
-        padding: 6px 6px 6px 32px;
-        text-decoration: none;
-        font-size: 25px;
-        color: #818181;
-        display: block;
-    }
-
-        .sidenav a:hover {
-            color: #f1f1f1;
-        }
-
-footer {
-    position: fixed;
+#sidebar-left a {
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color:#818181;
+    display: block;
 }
-footer p {
-    float:right;
+#sidebar-left a:hover {
     color:white;
+}
+
+#sidebar-left .dropbtn{
+    padding: 6px 6px 6px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    display: block;
+}
+
+#sidebar-left a:hover {
+    color: #f1f1f1;
+}
+
+#main {
+    float: left;
+    width: 50%;
+    background-color: white;
+}
+
+
+#footer {
+    clear: both;
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    background-color: black;
+    color:white;
+}
+
+#sidebar-left, #main, #sidebar-right {
+    min-height: 600px;
+}
+
+.sidenav a, .dropdown-btn {
+  padding: 6px 8px 6px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  border: none;
+  background: none;
+  width:100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+}
+
+.sidenav a:hover, .dropdown-btn:hover {
+    color: #f1f1f1;
+}
+
+.dropdown-container {
+    display: none;
+    background-color: #262626;
+    padding-left: 8px;
+}
+
+.fa-caret-down {
+    float: right;
+    padding-right: 8px;
 }

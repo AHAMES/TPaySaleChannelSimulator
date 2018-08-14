@@ -17,22 +17,26 @@ namespace TPaySaleChannelSimulator.Controllers
                 new Operator
                 {
                     name="Vodafone",
-                    Id=1
+                    Id=1,
+                    country="Egypt"
                 },
                 new Operator
                 {
                     name="Etisalat",
-                    Id=2
+                    Id=2,
+                    country="Egypt"
                 },
                 new Operator
                 {
                     name="Orange",
-                    Id=3
+                    Id=3,
+                    country="Egypt"
                 },
                 new Operator
                 {
                     name="WE",
-                    Id=4
+                    Id=4,
+                    country="Egypt"
                 }
             };
             return View(operators);

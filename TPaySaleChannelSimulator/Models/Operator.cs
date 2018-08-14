@@ -9,6 +9,11 @@ namespace TPaySaleChannelSimulator.Models
     {
         public string name { get; set; }
         public int Id { get; set; }
+        public String country { get; set; }
+        public bool isDown { get; set; }
+        public string description { get; set; }
+
+
     }
 
 }
