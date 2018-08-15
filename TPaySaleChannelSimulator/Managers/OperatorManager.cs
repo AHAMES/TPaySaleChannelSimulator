@@ -21,7 +21,7 @@ namespace TPaySaleChannelSimulator.Managers
                               where r.name.ToLower().Equals(op.name.ToLower()) &&
                                     r.country.ToLower().Equals(op.country.ToLower())
                               select r;
-            
+
             return _matchingOp.ToList();
         }
         public ManagerResultViewModel createOperator(Operator op)
@@ -51,15 +51,15 @@ namespace TPaySaleChannelSimulator.Managers
             _mrvm.name = op.name;
             _mrvm.Entity = "Operator";
             _mrvm.OperationType = "Editing";
-            if (_matchingOp.Count==1 && _matchingOp.ElementAt(0).Id==op.Id)
+            if (_matchingOp.Count == 1 && _matchingOp.ElementAt(0).Id == op.Id)
             {
                 var query = from Op in _db.Operators
                             where Op.Id == op.Id
                             select Op;
-                foreach(Operator Op in query)
+                foreach (Operator Op in query)
                 {
                     Op.country = op.country;
-                    Op.description= op.description;
+                    Op.description = op.description;
                     Op.name = op.name;
                     Op.isDown = op.isDown;
                 }
@@ -67,7 +67,7 @@ namespace TPaySaleChannelSimulator.Managers
                 {
                     _db.SaveChanges();
                 }
-                catch(Exception e)
+                catch (Exception e)
                 {
                     Console.WriteLine(e);
                 }
@@ -78,7 +78,25 @@ namespace TPaySaleChannelSimulator.Managers
             _mrvm.reason = "as another Operator of the same name and country exists";
             return _mrvm;
         }
-
+        public ManagerResultViewModel DeleteOperator(int id)
+        {
+            var _matchingOp = _db.Operators.Find(id);
+            var _mrvm = new ManagerResultViewModel();
+            _mrvm.country = _matchingOp.country;
+            _mrvm.name = _matchingOp.name;
+            _mrvm.Entity = "Operator";
+            _mrvm.OperationType = "deletion";
+            if (_matchingOp!=null)
+            {
+                _db.Operators.Remove(_matchingOp);
+                _db.SaveChanges();
+                _mrvm.isSuccessful = true;
+                return _mrvm;
+            }
+            _mrvm.isSuccessful = false;
+            _mrvm.reason = "as another Operator does not exist exists";
+            return _mrvm;
+        }
         protected void Dispose(bool disposing)
         {
             if (_db != null)

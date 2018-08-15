@@ -210,6 +210,8 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\SaleChannelController.cs" />
+    <Compile Include="Managers\SaleChannelManager.cs" />
     <Compile Include="Models\ManagerResultViewModel.cs" />
     <Compile Include="Controllers\MerchantController.cs" />
     <Compile Include="Controllers\OperatorController.cs" />
@@ -227,7 +229,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Merchant.cs" />
     <Compile Include="Models\Operator.cs" />
-    <Compile Include="Models\SaleChannel.cs" />
+    <Compile Include="Models\SaleCharter.cs" />
     <Compile Include="Models\TPayDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -305,6 +307,7 @@
     <Content Include="Views\Merchant\Details.cshtml" />
     <Content Include="Views\Merchant\Edit.cshtml" />
     <Content Include="Views\Shared\OperationStatus.cshtml" />
+    <Content Include="Views\SaleChannel\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

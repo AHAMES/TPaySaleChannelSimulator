@@ -2,6 +2,7 @@ namespace TPaySaleChannelSimulator.Migrations
 {
     using Models;
     using System;
+    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
@@ -16,30 +17,35 @@ namespace TPaySaleChannelSimulator.Migrations
 
         protected override void Seed(TPaySaleChannelSimulator.Models.TPayDb context)
         {
-            context.Merchants.AddOrUpdate(
-                 r => r.name,
-                 new Merchant { name = "Anghamy", country = "Egypt" },
-                 new Merchant { name = "Shahed", country = "KSA" },
-                 new Merchant { name = "SoundCloud", country = "UK" },
-                 new Merchant { name = "Spotify", country = "USA", description = "Yet another music application" });
 
-            context.Operators.AddOrUpdate(
-                 r => r.name,
-                 new Operator { name = "VodafoneEG", country = "Egypt" },
-                 new Operator { name = "EtisalatEG", country = "Egypt" },
-                 new Operator { name = "OrangeEG", country = "Egypt" },
-                 new Operator { name = "WE", country = "Egypt" });
-            context.SaleChannel.AddOrUpdate(
 
-                new SaleChannel { OperatorID = 1, MerchantID = 2 },
-                new SaleChannel { OperatorID = 1, MerchantID = 1 },
-                new SaleChannel { OperatorID = 1, MerchantID = 3 },
+            var M1 = new Merchant { name = "Anghamy", country = "Egypt" };
+            var M2 = new Merchant { name = "Shahed", country = "KSA" };
+            var M3 = new Merchant { name = "SoundCloud", country = "UK" };
+            var M4 = new Merchant { name = "Spotify", country = "USA", description = "Yet another music application" };
 
-                new SaleChannel { OperatorID = 2, MerchantID = 1 },
 
-                new SaleChannel { OperatorID = 3, MerchantID = 4 }
-                );
+            var O1 = new Operator { name = "VodafoneEG", country = "Egypt" };
+            var O2 = new Operator { name = "EtisalatEG", country = "Egypt" };
+            var O3 = new Operator { name = "OrangeEG", country = "Egypt" };
+            var O4 = new Operator { name = "WE", country = "Egypt" };
 
+            //M1.Operators.Add(O1);
+            //M2.Operators.Add(O1);
+            //M3.Operators.Add(O1);
+
+            //M2.Operators.Add(O2);
+            //M2.Operators.Add(O3);
+            //M4.Operators.Add(O4);
+            
+            //context.Merchants.AddOrUpdate(M1);
+            //context.Merchants.AddOrUpdate(M2);
+            //context.Merchants.AddOrUpdate(M3);
+            //context.Merchants.AddOrUpdate(M4);
         }
+        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        //{
+        //    base.OnModelCreating(modelBuilder);
+        //}
     }
 }

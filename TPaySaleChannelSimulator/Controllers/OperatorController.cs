@@ -73,9 +73,7 @@ namespace TPaySaleChannelSimulator.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(@operator).State = EntityState.Modified;
-                //db.SaveChanges();
-                //return RedirectToAction("Index");
+                
                 var _om = new OperatorManager();
                 var _mrvm = _om.EditOperator(@operator);
                 return View("OperationStatus", _mrvm);
@@ -103,10 +101,9 @@ namespace TPaySaleChannelSimulator.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Operator @operator = db.Operators.Find(id);
-            db.Operators.Remove(@operator);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            var _om = new OperatorManager();
+            var _mrvm = _om.DeleteOperator(id);
+            return View("OperationStatus", _mrvm);
         }
         protected override void Dispose(bool disposing)
         {

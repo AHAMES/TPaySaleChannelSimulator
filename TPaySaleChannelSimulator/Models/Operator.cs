@@ -12,6 +12,8 @@ namespace TPaySaleChannelSimulator.Models
         public string country { get; set; }
         public bool isDown { get; set; }
         public string description { get; set; }
+        public virtual ICollection<Merchant> Merchants { get; set; }
+
     }
 
 }
