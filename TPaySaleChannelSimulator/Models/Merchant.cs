@@ -5,7 +5,7 @@ using System.Web;
 
 namespace TPaySaleChannelSimulator.Models
 {
-    public class Operator
+    public class Merchant
     {
         public string name { get; set; }
         public int Id { get; set; }
@@ -13,7 +13,5 @@ namespace TPaySaleChannelSimulator.Models
         public bool isDown { get; set; }
         public string description { get; set; }
 
-
     }
-
 }

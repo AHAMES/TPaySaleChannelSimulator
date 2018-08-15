@@ -7,39 +7,39 @@ using TPaySaleChannelSimulator.Models;
 
 namespace TPaySaleChannelSimulator.Controllers
 {
-    public class OperatorController : Controller
+    public class MerchantController : Controller
     {
-        // GET: Operator
+        // GET: Merchant
         public ActionResult Index()
         {
-            var operators = new List<Operator>
+            var merchants = new List<Merchant>
             {
-                new Operator
+                new Merchant
                 {
-                    name="Vodafone",
+                    name="Anghamy",
                     Id=1,
                     country="Egypt"
                 },
-                new Operator
+                new Merchant
                 {
-                    name="Etisalat",
+                    name="Shahed",
                     Id=2,
-                    country="Egypt"
+                    country="KSA"
                 },
-                new Operator
+                new Merchant
                 {
-                    name="Orange",
+                    name="SoundCloud",
                     Id=3,
-                    country="Egypt"
+                    country="UK"
                 },
-                new Operator
+                new Merchant
                 {
-                    name="WE",
+                    name="Spotify",
                     Id=4,
-                    country="Egypt"
+                    country="US"
                 }
             };
-            return View(operators); 
+            return View(merchants);
         }
     }
 }
