@@ -5,13 +5,13 @@ using System.Web;
 
 namespace TPaySaleChannelSimulator.Models
 {
-    public class Operator
+    public class ManagerResultViewModel
     {
         public string name { get; set; }
-        public int Id { get; set; }
         public string country { get; set; }
-        public bool isDown { get; set; }
-        public string description { get; set; }
+        public bool isSuccessful { get; set; }
+        public string OperationType { get; set; }
+        public string Entity { get; set; }
+        public string reason { get; set; }
     }
-
 }

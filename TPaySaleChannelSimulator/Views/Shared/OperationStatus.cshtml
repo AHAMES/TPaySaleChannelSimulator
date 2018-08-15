@@ -1,0 +1,17 @@
+﻿@model TPaySaleChannelSimulator.Models.ManagerResultViewModel
+
+@if(Model.isSuccessful)
+{
+    ViewBag.Success = "Success";
+}
+else
+{
+    ViewBag.Success = "Failure";
+    
+}
+<h2>@ViewBag.Success</h2>
+<p> The @Model.OperationType of @Model.Entity @Model.name in @Model.country has been a @ViewBag.Success @Model.reason</p>
+
+<h4>
+    @Html.ActionLink("Back to List", "Index", Model.Entity)
+</h4>

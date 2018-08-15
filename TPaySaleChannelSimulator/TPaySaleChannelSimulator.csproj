@@ -210,17 +210,25 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Models\ManagerResultViewModel.cs" />
     <Compile Include="Controllers\MerchantController.cs" />
     <Compile Include="Controllers\OperatorController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Managers\OperatorManager.cs" />
+    <Compile Include="Migrations\201808151142175_InitialCreate.cs" />
+    <Compile Include="Migrations\201808151142175_InitialCreate.Designer.cs">
+      <DependentUpon>201808151142175_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Merchant.cs" />
     <Compile Include="Models\Operator.cs" />
-    <Compile Include="Models\OperatorMerchantViewModel.cs" />
+    <Compile Include="Models\SaleChannel.cs" />
+    <Compile Include="Models\TPayDb.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -287,7 +295,16 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Shared\_Services.cshtml" />
     <Content Include="Views\Merchant\Index.cshtml" />
+    <Content Include="Views\Operator\Create.cshtml" />
+    <Content Include="Views\Operator\Delete.cshtml" />
+    <Content Include="Views\Operator\Details.cshtml" />
+    <Content Include="Views\Operator\Edit.cshtml" />
     <Content Include="Views\Operator\Index.cshtml" />
+    <Content Include="Views\Merchant\Create.cshtml" />
+    <Content Include="Views\Merchant\Delete.cshtml" />
+    <Content Include="Views\Merchant\Details.cshtml" />
+    <Content Include="Views\Merchant\Edit.cshtml" />
+    <Content Include="Views\Shared\OperationStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -299,6 +316,11 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201808151142175_InitialCreate.resx">
+      <DependentUpon>201808151142175_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
