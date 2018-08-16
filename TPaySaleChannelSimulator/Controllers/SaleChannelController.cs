@@ -17,6 +17,14 @@ namespace TPaySaleChannelSimulator.Controllers
         {
             return View(_scm.readDb());
         }
+
+        public ActionResult ChooseMerchant()
+        {
+
+            var _mm = new MerchantManager();
+            return View(_mm.readDb());
+        }
+
         // GET: Operator/Delete/5
         public ActionResult Delete(int? Mid, int? Oid)
         {

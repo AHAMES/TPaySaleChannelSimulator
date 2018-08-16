@@ -12,7 +12,8 @@ namespace TPaySaleChannelSimulator.Models
         {
 
         }
-        public DbSet<Operator> Operators { get; set; }
-        public DbSet<Merchant> Merchants { get; set; }
-     }
+        public virtual DbSet<Operator> Operators { get; set; }
+        public virtual DbSet<Merchant> Merchants { get; set; }
+        public object Merchant { get; internal set; }
+    }
 }

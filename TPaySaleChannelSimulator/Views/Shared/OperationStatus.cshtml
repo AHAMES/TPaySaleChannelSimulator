@@ -13,7 +13,8 @@ else
 <p> The @Model.OperationType of @Model.Entity @Model.name in @Model.country has been a @ViewBag.Success @Model.reason</p>
 
 @if (Model.Entity.Equals("Operator and Merchant"))
-{<h4>
+{
+    <h4>
         @Html.ActionLink("Back to List", "Index", "SaleChannel");
     </h4>
 }

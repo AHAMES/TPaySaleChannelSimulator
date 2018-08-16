@@ -211,6 +211,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SaleChannelController.cs" />
+    <Compile Include="Managers\MerchantManager.cs" />
     <Compile Include="Managers\SaleChannelManager.cs" />
     <Compile Include="Models\ManagerResultViewModel.cs" />
     <Compile Include="Controllers\MerchantController.cs" />
@@ -309,6 +310,7 @@
     <Content Include="Views\Shared\OperationStatus.cshtml" />
     <Content Include="Views\SaleChannel\Index.cshtml" />
     <Content Include="Views\SaleChannel\Delete.cshtml" />
+    <Content Include="Views\SaleChannel\ChooseMerchant.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
