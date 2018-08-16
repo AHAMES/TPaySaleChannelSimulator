@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
+<h2>Sale Channel</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -41,9 +41,7 @@
             @Html.DisplayFor(modelItem => item.merchantCountry)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Delete", "Delete", new { Mid=item.merchantId,Oid=item.operatorId})
         </td>
     </tr>
 }

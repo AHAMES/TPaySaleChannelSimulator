@@ -30,22 +30,24 @@ namespace TPaySaleChannelSimulator.Migrations
             var O3 = new Operator { name = "OrangeEG", country = "Egypt" };
             var O4 = new Operator { name = "WE", country = "Egypt" };
 
-            //M1.Operators.Add(O1);
-            //M2.Operators.Add(O1);
-            //M3.Operators.Add(O1);
+            context.Operators.AddOrUpdate(r=>r.name,O1);
+            context.Operators.AddOrUpdate(r => r.name,O2);
+            context.Operators.AddOrUpdate(r => r.name, O3);
+            context.Operators.AddOrUpdate(r => r.name, O4);
 
-            //M2.Operators.Add(O2);
-            //M2.Operators.Add(O3);
-            //M4.Operators.Add(O4);
-            
-            //context.Merchants.AddOrUpdate(M1);
-            //context.Merchants.AddOrUpdate(M2);
-            //context.Merchants.AddOrUpdate(M3);
-            //context.Merchants.AddOrUpdate(M4);
+            M1.Operators.Add(O1);
+            M2.Operators.Add(O1);
+            M3.Operators.Add(O1);
+
+            M2.Operators.Add(O2);
+            M2.Operators.Add(O3);
+            M4.Operators.Add(O3);
+
+            context.Merchants.AddOrUpdate(M1);
+            context.Merchants.AddOrUpdate(M2);
+            context.Merchants.AddOrUpdate(M3);
+            context.Merchants.AddOrUpdate(M4);
         }
-        //protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        //{
-        //    base.OnModelCreating(modelBuilder);
-        //}
+        
     }
 }

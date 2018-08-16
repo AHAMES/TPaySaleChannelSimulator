@@ -88,7 +88,8 @@ namespace TPaySaleChannelSimulator.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Operator @operator = db.Operators.Find(id);
+            var _om = new OperatorManager();
+            Operator @operator = _om.readDb().ElementAt(0);
             if (@operator == null)
             {
                 return HttpNotFound();

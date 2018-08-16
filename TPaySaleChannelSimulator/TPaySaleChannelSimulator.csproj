@@ -308,6 +308,7 @@
     <Content Include="Views\Merchant\Edit.cshtml" />
     <Content Include="Views\Shared\OperationStatus.cshtml" />
     <Content Include="Views\SaleChannel\Index.cshtml" />
+    <Content Include="Views\SaleChannel\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

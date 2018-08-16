@@ -94,7 +94,7 @@ namespace TPaySaleChannelSimulator.Managers
                 return _mrvm;
             }
             _mrvm.isSuccessful = false;
-            _mrvm.reason = "as another Operator does not exist exists";
+            _mrvm.reason = "as the Operator does not exist";
             return _mrvm;
         }
         protected void Dispose(bool disposing)
