@@ -213,6 +213,8 @@
     <Compile Include="Controllers\SaleChannelController.cs" />
     <Compile Include="Managers\MerchantManager.cs" />
     <Compile Include="Managers\SaleChannelManager.cs" />
+    <Compile Include="Models\ChooseMerchantModel.cs" />
+    <Compile Include="Models\ChooseOperatorModel.cs" />
     <Compile Include="Models\ManagerResultViewModel.cs" />
     <Compile Include="Controllers\MerchantController.cs" />
     <Compile Include="Controllers\OperatorController.cs" />
@@ -311,6 +313,7 @@
     <Content Include="Views\SaleChannel\Index.cshtml" />
     <Content Include="Views\SaleChannel\Delete.cshtml" />
     <Content Include="Views\SaleChannel\ChooseMerchant.cshtml" />
+    <Content Include="Views\SaleChannel\ChooseOperator.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

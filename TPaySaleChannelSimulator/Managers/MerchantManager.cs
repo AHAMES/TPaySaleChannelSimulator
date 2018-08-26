@@ -13,6 +13,10 @@ namespace TPaySaleChannelSimulator.Managers
         {
             return _db.Merchants.ToList();
         }
+        public Merchant GetMerchant(int id)
+        {
+            return _db.Merchants.ToList().Find(m => m.Id == id);
+        }
         public List<Merchant> EntityExists(Merchant op)
         {
             var _matchingOp = from r in _db.Merchants

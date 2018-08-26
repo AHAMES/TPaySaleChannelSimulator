@@ -20,9 +20,28 @@ namespace TPaySaleChannelSimulator.Controllers
 
         public ActionResult ChooseMerchant()
         {
+            var x = new ChooseMerchantModel();
+            x.Merchants = _scm.GetSelectListItems();
+            return View(x);
+        }
 
-            var _mm = new MerchantManager();
-            return View(_mm.readDb());
+        [HttpPost]
+        public ActionResult CreateRelation(FormCollection form)
+        {
+            int merchantId = int.Parse(form["Merchant"].ToString());
+            int operatorId = int.Parse(form["OperatorSelected"].ToString());
+
+            var situation = _scm.createRelationShip(merchantId, operatorId);
+            return View("OperationStatus",situation);
+        }
+
+        [HttpPost]
+        public ActionResult ChooseOperator(FormCollection form)
+        {
+            int id = int.Parse(form["MerchantSelected"].ToString());
+            var x = new ChooseOperatorModel(id);
+            x.Operators = _scm.GetOperatorsList(id);
+            return View(x);
         }
 
         // GET: Operator/Delete/5

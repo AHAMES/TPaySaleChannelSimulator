@@ -11,10 +11,17 @@ namespace TPaySaleChannelSimulator.Managers
     public class OperatorManager
     {
         TPayDb _db = new TPayDb();
+
+        public Operator GetOperator(int id)
+        {
+            return _db.Operators.ToList().Find(m => m.Id == id);
+        }
+
         public List<Operator> readDb()
         {
             return _db.Operators.ToList();
         }
+
         public List<Operator> EntityExists(Operator op)
         {
             var _matchingOp = from r in _db.Operators

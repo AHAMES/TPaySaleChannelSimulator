@@ -1,0 +1,14 @@
+﻿@model TPaySaleChannelSimulator.Models.ChooseOperatorModel
+@{
+    ViewBag.Title = "ChooseOperator";
+}
+
+<h2>Choose Operator</h2>
+
+<label>Operators</label>
+@using (Html.BeginForm("CreateRelation", "SaleChannel", FormMethod.Post))
+{
+    @Html.DropDownList("OperatorSelected", Model.Operators)
+    @Html.Hidden("Merchant",Model.merchant.Id)
+    <input id="submitOperator" type="submit" value="choose" />
+}

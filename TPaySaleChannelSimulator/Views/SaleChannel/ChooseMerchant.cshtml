@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TPaySaleChannelSimulator.Models.Merchant>
+﻿@model TPaySaleChannelSimulator.Models.ChooseMerchantModel
 @{
     ViewBag.Title = "ChooseMerchant";
 }
@@ -6,4 +6,8 @@
 <h2>Choose Merchant</h2>
 
 <label>Merchants</label>
-@*@Html.DropDownListFor(m => m.Id, Model., "Please select")*@
+@using (Html.BeginForm("ChooseOperator", "SaleChannel", FormMethod.Post))
+{
+    @Html.DropDownList("MerchantSelected", Model.Merchants)
+    <input id="submitMerchant" type="submit" value="choose" />
+}
