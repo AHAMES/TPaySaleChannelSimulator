@@ -47,34 +47,32 @@ namespace TPaySaleChannelSimulator.Managers
         }
         public ManagerResultViewModel EditMerchant(Merchant op)
         {
-            var _matchingOp = EntityExists(op);
+
             var _mrvm = new ManagerResultViewModel();
             _mrvm.country = op.country;
             _mrvm.name = op.name;
             _mrvm.Entity = "Merchant";
             _mrvm.OperationType = "Editing";
-            if (_matchingOp.Count == 1 && _matchingOp.ElementAt(0).Id == op.Id)
+            var query = from Op in _db.Merchants
+                        where Op.Id == op.Id
+                        select Op;
+            if (query.Any())
             {
-                var query = from Op in _db.Merchants
-                            where Op.Id == op.Id
-                            select Op;
-                foreach (Merchant Op in query)
+
+                var Op = _db.Merchants.Find(query.ToList().First().Id);
+                if (Op.name != op.name || Op.country != op.country)
                 {
                     Op.country = op.country;
                     Op.description = op.description;
                     Op.name = op.name;
                     Op.isDown = op.isDown;
-                }
-                try
-                {
+                    _db.Entry(Op).State = System.Data.Entity.EntityState.Modified;
                     _db.SaveChanges();
+
+
+                    _mrvm.isSuccessful = true;
+                    return _mrvm;
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
-                _mrvm.isSuccessful = true;
-                return _mrvm;
             }
             _mrvm.isSuccessful = false;
             _mrvm.reason = "as another Merchant of the same name and country exists";

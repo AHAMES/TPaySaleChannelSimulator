@@ -12,12 +12,12 @@ namespace TPaySaleChannelSimulator.Controllers
 {
     public class OperatorController : Controller
     {
-        private TPayDb db = new TPayDb();
 
+        OperatorManager _om = new OperatorManager();
         // GET: Operator
         public ActionResult Index()
         {
-            var _om=new OperatorManager();
+
 
             return View(_om.readDb());
         }
@@ -40,7 +40,6 @@ namespace TPaySaleChannelSimulator.Controllers
         {
             if (ModelState.IsValid)
             {
-                var _om = new OperatorManager();
                 var _mrvm = _om.createOperator(@operator);
 
                 return View("OperationStatus", _mrvm);
@@ -56,7 +55,7 @@ namespace TPaySaleChannelSimulator.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Operator @operator = db.Operators.Find(id);
+            Operator @operator = _om.GetOperator((int)id);
             if (@operator == null)
             {
                 return HttpNotFound();
@@ -74,7 +73,6 @@ namespace TPaySaleChannelSimulator.Controllers
             if (ModelState.IsValid)
             {
                 
-                var _om = new OperatorManager();
                 var _mrvm = _om.EditOperator(@operator);
                 return View("OperationStatus", _mrvm);
             }
@@ -88,7 +86,6 @@ namespace TPaySaleChannelSimulator.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var _om = new OperatorManager();
             Operator @operator = _om.readDb().ElementAt(0);
             if (@operator == null)
             {
@@ -102,17 +99,9 @@ namespace TPaySaleChannelSimulator.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            var _om = new OperatorManager();
             var _mrvm = _om.DeleteOperator(id);
             return View("OperationStatus", _mrvm);
         }
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
-        }
+        
     }
 }

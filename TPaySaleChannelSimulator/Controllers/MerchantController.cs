@@ -6,34 +6,22 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using TPaySaleChannelSimulator.Managers;
 using TPaySaleChannelSimulator.Models;
 
 namespace TPaySaleChannelSimulator.Controllers
 {
     public class MerchantController : Controller
     {
-        private TPayDb db = new TPayDb();
-
+       MerchantManager _mm = new MerchantManager();
         // GET: Merchant
         public ActionResult Index()
         {
-            return View(db.Merchants.ToList());
+            return View(_mm.readDb());
         }
 
         // GET: Merchant/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Merchant merchant = db.Merchants.Find(id);
-            if (merchant == null)
-            {
-                return HttpNotFound();
-            }
-            return View(merchant);
-        }
+
 
         // GET: Merchant/Create
         public ActionResult Create()
@@ -50,9 +38,9 @@ namespace TPaySaleChannelSimulator.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Merchants.Add(merchant);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var _mrvm = _mm.createMerchant(merchant);
+
+                return View("OperationStatus", _mrvm);
             }
 
             return View(merchant);
@@ -65,7 +53,7 @@ namespace TPaySaleChannelSimulator.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Merchant merchant = db.Merchants.Find(id);
+            var merchant = _mm.GetMerchant((int)id);
             if (merchant == null)
             {
                 return HttpNotFound();
@@ -82,9 +70,8 @@ namespace TPaySaleChannelSimulator.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(merchant).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var _mrvm = _mm.EditMerchant(merchant);
+                return View("OperationStatus", _mrvm);
             }
             return View(merchant);
         }
@@ -96,7 +83,7 @@ namespace TPaySaleChannelSimulator.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Merchant merchant = db.Merchants.Find(id);
+            Merchant merchant = _mm.readDb().ElementAt(0);
             if (merchant == null)
             {
                 return HttpNotFound();
@@ -109,19 +96,9 @@ namespace TPaySaleChannelSimulator.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Merchant merchant = db.Merchants.Find(id);
-            db.Merchants.Remove(merchant);
-            db.SaveChanges();
-            return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+           
+            var _mrvm = _mm.DeleteMerchant(id);
+            return View("OperationStatus", _mrvm);
         }
     }
 }

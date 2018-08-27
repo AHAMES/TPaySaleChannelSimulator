@@ -1,0 +1,43 @@
+﻿@model TPaySaleChannelSimulator.Models.ChooseRelationshipViewModel
+@using TPaySaleChannelSimulator.Managers;
+@{
+    ViewBag.Title = "ChooseRelationship";
+
+    // var selectedOperator = int.Parse( Request.Form["OperatorSelected"].ToString());
+};
+
+
+<h2>Create New Relationship</h2>
+@using (Html.BeginForm("CreateRelation", "SaleChannel", FormMethod.Post))
+{
+
+    //var MerchantExceptions = new SaleChannelManager();
+    @Html.Hidden("chosenMerchant", Model.Merchants.ToList().First().Value)
+    @Html.DropDownList("MerchantSelected", Model.Merchants, new { onchange = "ChangeOperators(this);" })
+    @Html.DropDownList("OperatorSelected", Model.Operators)
+
+    <input id="submitOperator" type="submit" value="choose" />
+}
+
+@*@{
+            if (Request.Form.HasKeys())
+            {
+                var selectedOperator = int.Parse(Request.Form["OperatorSelected"].ToString());
+            }
+    }*@
+@*@{
+        public /*IEnumerable<SelectListItem>*/bool ChangeOperators(int merchandID)
+        {
+            Response.Write("<script>alert('Data inserted successfully')</script>");
+            return true;
+        }
+    }*@
+@*<script>
+
+        $(document).ready(function () {
+            var chosenMerchant = $("#chosenMerchant").val();
+            $("#MerchantSelected").change(function () {
+                alert("sdsdas");
+            });
+        });
+    </script>*@

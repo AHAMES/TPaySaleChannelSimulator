@@ -18,31 +18,40 @@ namespace TPaySaleChannelSimulator.Controllers
             return View(_scm.readDb());
         }
 
-        public ActionResult ChooseMerchant()
-        {
-            var x = new ChooseMerchantModel();
-            x.Merchants = _scm.GetSelectListItems();
-            return View(x);
-        }
+        //public ActionResult ChooseMerchant()
+        //{
+        //    var x = new ChooseMerchantModel();
+        //    x.Merchants = _scm.GetSelectListItems();
+        //    return View(x);
+        //}
 
+
+        public ActionResult CreateRelationShip()
+        {
+            var model = new ChooseRelationshipViewModel();
+            model.Merchants = _scm.GetMerchantsList();
+            model.Operators = _scm.GetOperatorsList();
+            model.SaleChannels = _scm.readDb();
+            return View("ChooseRelationship",model);
+        }
         [HttpPost]
         public ActionResult CreateRelation(FormCollection form)
         {
-            int merchantId = int.Parse(form["Merchant"].ToString());
+            int merchantId = int.Parse(form["MerchantSelected"].ToString());
             int operatorId = int.Parse(form["OperatorSelected"].ToString());
 
             var situation = _scm.createRelationShip(merchantId, operatorId);
-            return View("OperationStatus",situation);
+            return View("OperationStatus", situation);
         }
 
-        [HttpPost]
-        public ActionResult ChooseOperator(FormCollection form)
-        {
-            int id = int.Parse(form["MerchantSelected"].ToString());
-            var x = new ChooseOperatorModel(id);
-            x.Operators = _scm.GetOperatorsList(id);
-            return View(x);
-        }
+        //[HttpPost]
+        //public ActionResult ChooseOperator(FormCollection form)
+        //{
+        //    int id = int.Parse(form["MerchantSelected"].ToString());
+        //    var x = new ChooseOperatorModel(id);
+        //    x.Operators = _scm.GetOperatorsList(id);
+        //    return View(x);
+        //}
 
         // GET: Operator/Delete/5
         public ActionResult Delete(int? Mid, int? Oid)

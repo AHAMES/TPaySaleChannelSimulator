@@ -58,28 +58,26 @@ namespace TPaySaleChannelSimulator.Managers
             _mrvm.name = op.name;
             _mrvm.Entity = "Operator";
             _mrvm.OperationType = "Editing";
-            if (_matchingOp.Count == 1 && _matchingOp.ElementAt(0).Id == op.Id)
+            var query = from Op in _db.Operators
+                        where Op.Id == op.Id
+                        select Op;
+            if (query.Any())
             {
-                var query = from Op in _db.Operators
-                            where Op.Id == op.Id
-                            select Op;
-                foreach (Operator Op in query)
+
+                var Op = _db.Operators.Find(query.ToList().First().Id);
+                if (Op.name != op.name || Op.country != op.country)
                 {
                     Op.country = op.country;
                     Op.description = op.description;
                     Op.name = op.name;
                     Op.isDown = op.isDown;
-                }
-                try
-                {
+                    _db.Entry(Op).State = System.Data.Entity.EntityState.Modified;
                     _db.SaveChanges();
+
+
+                    _mrvm.isSuccessful = true;
+                    return _mrvm;
                 }
-                catch (Exception e)
-                {
-                    Console.WriteLine(e);
-                }
-                _mrvm.isSuccessful = true;
-                return _mrvm;
             }
             _mrvm.isSuccessful = false;
             _mrvm.reason = "as another Operator of the same name and country exists";
