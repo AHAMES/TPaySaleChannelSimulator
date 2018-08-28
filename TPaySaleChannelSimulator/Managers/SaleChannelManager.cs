@@ -11,6 +11,8 @@ namespace TPaySaleChannelSimulator.Managers
     {
         TPayDb _db = new TPayDb();
 
+       
+
         public SaleCharter getCharter(int MerchantId, int OperatorId)
         {
             var _merchant = _db.Merchants.Find(MerchantId);
@@ -62,40 +64,13 @@ namespace TPaySaleChannelSimulator.Managers
             var _merchants = _mm.readDb();
             foreach (var item in _operators)
             {
-
-                if (_charters.Find(m => (m.operatorId == item.Id) && (m.merchantId == id)) != null)
+                if (_charters.Find(m => (m.operatorId == item.Id) && (m.merchantId == id)) == null)
                 {
                     selectList.Add(new SelectListItem
                     {
                         Value = item.Id.ToString(),
                         Text = item.name
                     });
-
-                }
-
-            }
-            return selectList;
-        }
-
-        public IEnumerable<SelectListItem> GetMerchantsList(int id)
-        {
-            var selectList = new List<SelectListItem>();
-            var _charters = readDb();
-            var _om = new OperatorManager();
-            var _operators = _om.readDb();
-            var _mm = new MerchantManager();
-            var _merchants = _mm.readDb();
-            foreach (var item in _merchants)
-            {
-
-                if (_charters.Find(m => (m.operatorId == id) && (m.merchantId == item.Id)) != null)
-                {
-                    selectList.Add(new SelectListItem
-                    {
-                        Value = item.Id.ToString(),
-                        Text = item.name
-                    });
-
                 }
 
             }

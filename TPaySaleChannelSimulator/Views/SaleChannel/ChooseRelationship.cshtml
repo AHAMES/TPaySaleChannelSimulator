@@ -13,7 +13,7 @@
 
     //var MerchantExceptions = new SaleChannelManager();
     @Html.Hidden("chosenMerchant", Model.Merchants.ToList().First().Value)
-    @Html.DropDownList("MerchantSelected", Model.Merchants, new { onchange = "ChangeOperators(this);" })
+    @Html.DropDownList("MerchantSelected", Model.Merchants)
     @Html.DropDownList("OperatorSelected", Model.Operators)
 
     <input id="submitOperator" type="submit" value="choose" />
@@ -25,19 +25,32 @@
                 var selectedOperator = int.Parse(Request.Form["OperatorSelected"].ToString());
             }
     }*@
-@*@{
-        public /*IEnumerable<SelectListItem>*/bool ChangeOperators(int merchandID)
-        {
-            Response.Write("<script>alert('Data inserted successfully')</script>");
-            return true;
-        }
-    }*@
-@*<script>
 
-        $(document).ready(function () {
-            var chosenMerchant = $("#chosenMerchant").val();
-            $("#MerchantSelected").change(function () {
-                alert("sdsdas");
+<script>
+
+    $(document).ready(function () {
+        $("#MerchantSelected").change(function () {
+            debugger;
+            var exceptions = {};
+            exceptions.url = "/SaleChannel/FindUsedOperators";
+            exceptions.type = "POST";
+            exceptions.data = JSON.stringify({
+                merchantID: $("#MerchantSelected").val()
             });
+            exceptions.datatype = "json";
+            exceptions.contentType = "application/json";
+            exceptions.success = function (OperatorList) {
+                $("#OperatorSelected").empty();
+
+                for (var i = 0 ; i < OperatorList.length; i++) {
+                    $("#OperatorSelected").append("<option value=" + OperatorList[i].Value + ">" + OperatorList[i].Text + "</option>")
+                }
+            };
+            exceptions.error = function () {
+                alert("Error");
+            }
+            $.ajax(exceptions);
+
         });
-    </script>*@
+    });
+</script>

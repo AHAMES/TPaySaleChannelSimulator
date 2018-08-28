@@ -34,6 +34,14 @@ namespace TPaySaleChannelSimulator.Controllers
             model.SaleChannels = _scm.readDb();
             return View("ChooseRelationship",model);
         }
+
+        [HttpPost]
+        public JsonResult FindUsedOperators(string merchantID)
+        {
+
+            var OperatorList = _scm.GetOperatorsList(int.Parse(merchantID));
+            return Json(OperatorList);
+        }
         [HttpPost]
         public ActionResult CreateRelation(FormCollection form)
         {
